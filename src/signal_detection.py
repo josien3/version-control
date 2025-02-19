@@ -1,6 +1,6 @@
-
-import scipy.stats as stats
 import numpy as np
+from scipy import stats
+
 
 class SignalDetection:
     def __init__(self, hits, misses, false_alarms, correct_rejections):
@@ -33,7 +33,7 @@ class SignalDetection:
         H = self.hit_rate()
         FA = self.false_alarm_rate()
 
-        # Preventing extreme values (0 or 1)
+       
         H = min(max(H, 1e-6), 1 - 1e-6)
         FA = min(max(FA, 1e-6), 1 - 1e-6)
 
@@ -48,15 +48,18 @@ class SignalDetection:
             "Criterion": self.criterion(),
         }
 
-# Ensure script runs when executed
+
 if __name__ == "__main__":
-    # Example data
+   
     sd = SignalDetection(hits=40, misses=10, false_alarms=15, correct_rejections=35)
     
-    # Print results
+  
     print("Signal Detection Summary:")
     for key, value in sd.summary().items():
         print(f"{key}: {value:.4f}")  # Print results with 4 decimal places
+
+
+
 
 
 
